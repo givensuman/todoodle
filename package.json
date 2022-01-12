@@ -1,0 +1,11 @@
+{
+  "name": "tododo",
+  "version": "1.0.0",
+  "description": "App for keep track of your to-dos",
+  "repository": "https://www.github.com/givensuman/tododo",
+  "author": "Given Suman",
+  "license": "MIT",
+  "scripts": {
+    "dev": "(cd client && yarn start);"
+  }
+}
