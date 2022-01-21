@@ -61,9 +61,7 @@ const Login = () => {
             className='mx-auto'
             variant='light' 
             onClick={async () => await signIn('Google').then(async res => {
-                let data = await getUser(res.user)
-                user.set(data)
-                theme.set(data.themeIndex)
+                console.log(res)
             })}
             >
                 <Icon 
