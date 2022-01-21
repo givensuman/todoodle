@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react'
-import { Button, Container, Stack } from 'react-bootstrap'
+import { Button } from 'react-bootstrap'
 import { CheckLg, XLg } from 'react-bootstrap-icons'
 import styled from '@emotion/styled'
 import { completeTask } from '../firebase/handleUser'

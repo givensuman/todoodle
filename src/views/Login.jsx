@@ -4,9 +4,8 @@ import styled from '@emotion/styled'
 import Wrapper from '../components/Wrapper'
 
 import signIn from '../firebase/signIn'
-import { setUser, getUser } from '../firebase/handleUser'
+import { getUser } from '../firebase/handleUser'
 import { StoreContext } from '../utils/store'
-import theme from '../styles/theme'
 
 const Header = styled.h1`
     font-size: 3.5em;

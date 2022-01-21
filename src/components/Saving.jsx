@@ -33,14 +33,14 @@ const Saving = () => {
         <>{show ?
             <Card className='shadow'>
                 <span style={{marginRight: '0.5em'}}>Saving...</span>
-                {databaseLoad.state == true ?
+                {databaseLoad.state === true ?
                 <Spinner 
                 as='span'
                 animation='border'
                 size='sm'
                 />
                 :
-                databaseLoad.state == false ?
+                databaseLoad.state === false ?
                 <CheckLg />
                 :
                 databaseLoad.state === 'error' ?
