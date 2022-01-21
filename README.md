@@ -24,4 +24,8 @@ If you don't mind spaghetti code I don't see why not. You'll need to configure a
 #### Is this maintained?
 Not really. Though I am interested in adding an actual "doodle" component to this with an HTML canvas. I would also probably try something other than Bootstrap as I wasn't really happy with it towards the end.
 
+<<<<<<< HEAD
 See you in a year!
+=======
+See you in a year!
+>>>>>>> e64cb7affdb3f0590777b724108abdb1c6cf3c40
