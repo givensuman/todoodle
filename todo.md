@@ -21,14 +21,16 @@ __draggability__
 ~~improve cross-out~~
 ~~implement completed tasks count~~
 ~~complete/delete animation~~
-use local data/github auth bug
+~~use local data/github auth bug~~
 ~~fix alignment issues (login/list)~~
 ~~404 redirect~~
-firestore .env and rules
+~~firestore .env~~ and rules
 background sliders? (https://www.npmjs.com/package/react-background-slider)
 ~~modal bug~~
 
 ~~stopoverriding completed tasks, improve setuser~~
+
+~~fix loading screens~~
 
 
 
