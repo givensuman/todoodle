@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Button, Container, Stack, Col } from 'react-bootstrap'
 import styled from '@emotion/styled'
 import Wrapper from '../components/Wrapper'
@@ -39,6 +39,7 @@ const StyledButton = styled(Button)`
 
 const Login = () => {
     const { user, theme } = useContext(StoreContext)
+    const [error, setError] = useState(false)
 
     return (
         <>
@@ -60,9 +61,18 @@ const Login = () => {
             <StyledButton
             className='mx-auto'
             variant='light' 
-            onClick={async () => await signIn('Google').then(async res => {
-                console.log(res)
-            })}
+            onClick={async () => await signIn('Google')
+            .then(async res => {
+                let data = await getUser(res.user)
+                user.set(data)
+                theme.set(data.themeIndex)
+                setError(false)
+            })
+            .catch(err => {
+                console.error(err)
+                setError(true)
+            })
+            }
             >
                 <Icon 
                 src={require('../assets/google.png')} 
@@ -73,11 +83,17 @@ const Login = () => {
             <StyledButton
             className='mx-auto'
             variant='dark'
-            onClick={async () => await signIn('Github').then(async res => {
+            onClick={async () => await signIn('Github')
+            .then(async res => {
                 let data = await getUser(res.user)
                 user.set(data)
                 theme.set(data.themeIndex)
-            })}
+            })
+            .catch(err => {
+                console.error(err)
+                setError(true)
+            })
+            }
             >
                 <Icon 
                 src={require('../assets/github.png')} 
@@ -85,6 +101,9 @@ const Login = () => {
                 />
                 Github
             </StyledButton>
+            {!error ? null :
+            <h4>Something went wrong.</h4>
+            }
             {/* <StyledButton
             className='mx-auto'
             variant='primary'
