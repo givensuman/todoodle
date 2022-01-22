@@ -1,6 +1,6 @@
 {
   "name": "todoodle",
-  "description": "An over-engineered to-do list",
+  "description": "An over-engineered to-do list.",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
