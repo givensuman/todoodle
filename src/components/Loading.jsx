@@ -15,7 +15,7 @@ const Loading = () =>
         className='mx-auto'
         style={{
             position: 'absolute',
-            top: '15%'
+            top: '30%'
         }}
         >
             <span className='visually-hidden'>Loading...</span>

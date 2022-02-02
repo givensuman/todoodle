@@ -107,7 +107,7 @@ const Nav = ({ data, removeList, next, prev, openList, disabled }) => {
             <Dropdown>
                 <Dropdown.Toggle size='sm'>Select &nbsp;</Dropdown.Toggle>
                 <Dropdown.Menu>
-                    {lists.state.map(item => 
+                    {lists.state.length > 0 && lists.state.map(item => 
                             <Dropdown.Item 
                             as='button'
                             onClick={() => openList(item.id)}
