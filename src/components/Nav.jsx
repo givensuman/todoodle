@@ -80,6 +80,7 @@ const Nav = ({ data, removeList, next, prev, openList, disabled }) => {
 
     return (
         <>
+        {data && 
         <Navbar>
             <Container justify='center' align='center'>
             {width > 500 ?
@@ -120,7 +121,13 @@ const Nav = ({ data, removeList, next, prev, openList, disabled }) => {
             </Dropdown>
             : null}
             <OverlayTrigger overlay={<Tooltip>Previous</Tooltip>}>
-                <Button  size='sm' onClick={prev} disabled={disabled}>
+                <Button 
+                size='sm' 
+                onClick={prev} 
+                disabled={
+                    disabled || lists.state.length === 1
+                }
+                >
                     <ChevronLeft />
                 </Button>
             </OverlayTrigger>
@@ -128,7 +135,13 @@ const Nav = ({ data, removeList, next, prev, openList, disabled }) => {
                 {data.data.name}
             </Navbar.Text>
             <OverlayTrigger overlay={<Tooltip>Next</Tooltip>}>
-                <Button size='sm' onClick={next} disabled={disabled}>
+                <Button 
+                size='sm' 
+                onClick={next} 
+                disabled={
+                    disabled || lists.state.length === 1
+                }
+                >
                     <ChevronRight />
                 </Button>
             </OverlayTrigger>
@@ -176,6 +189,7 @@ const Nav = ({ data, removeList, next, prev, openList, disabled }) => {
             : null}
             </Container>
         </Navbar>
+        }
 
         <Modal show={showModal} onHide={closeModal}>
             <Modal.Header closeButton>

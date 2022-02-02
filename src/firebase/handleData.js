@@ -22,12 +22,13 @@ export const getLists = async uid => {
         }
     ))
     if (data.length > 0) return data
-    await addList(uid, {
-        name: 'My first list ✏'
-    })
-    return [{
-        name: 'My first list ✏'
-    }]
+    // await addList(uid, {
+    //     name: 'My first list ✏'
+    // })
+    // return [{
+    //     name: 'My first list ✏'
+    // }]
+    return []
 }
 
 export const addList = async (uid, data) => {

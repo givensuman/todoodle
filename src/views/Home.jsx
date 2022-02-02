@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import Wrapper from '../components/Wrapper'
@@ -7,11 +7,11 @@ import List from '../components/List'
 import Nav from '../components/Nav'
 import Loading from '../components/Loading'
 import Saving from '../components/Saving'
+import NoLists from '../components/NoLists'
 
 import { StoreContext } from '../utils/store'
 
 import { addItem, getItems, deleteItem } from '../firebase/handleData'
-import { useEffect } from 'react'
 
 const Home = () => {
 
@@ -60,10 +60,16 @@ const Home = () => {
     }
     const removeList = async id => {
         const listIndex = lists.state.findIndex(list => list.id === id)
+        if (lists.state.length > 1) {  
+            lists.set(lists.state.splice(listIndex, 1))
+        } else {
+            lists.set([])
+        }
         if (index > 0) {
             setIndex(listIndex - 1)
+        } else {
+            setIndex(0) // Refreshes component
         }
-        lists.state.splice(listIndex, 1)
     }
     const getListItems = async id => {
         setLoading(true)
@@ -79,12 +85,16 @@ const Home = () => {
             .then(() => databaseLoad.set(false))
             .catch(() => databaseLoad.set('error'))
     }
-    useEffect(() => getListItems(lists.state[index].id), [index])
+    useEffect(() => { 
+        if (lists.state.length > 0) getListItems(lists.state[index].id)
+    }, [index])
     return (
         <>
         <Wrapper>
+        {!lists.state.length > 0 ? <NoLists /> :
+        <>
             <Nav 
-            data={lists.state[index] || lists.state[lists.state.length - 1]} 
+            data={lists.state[index]} 
             prev={decreaseIndex}
             next={increaseIndex}
             openList={openList}
@@ -103,6 +113,8 @@ const Home = () => {
                 />
             </>
             }
+        </>
+        }
         </Wrapper>
         <Saving />
         </>

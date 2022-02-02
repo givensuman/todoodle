@@ -16,6 +16,8 @@ export const Loading = () => {
                 .then(res => {
                     if (res.length > 0) {
                         lists.set(res)
+                    } else {
+                        lists.set([])
                     }
                 })
                 .catch(err => console.error(err))
