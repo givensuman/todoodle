@@ -161,11 +161,11 @@ const Nav = ({ data, removeList, next, prev, openList, disabled }) => {
                     } else {
                         databaseLoad.set(true)
                         await deleteList(user.state.uid, data.id)
-                            .then(() => {
+                            .then(async () => {
+                                await removeList(data.id)
                                 databaseLoad.set(false)
                             })
                             .catch(() => databaseLoad.set('error'))
-                        removeList(data.id)
                         setVerifyDelete(false)
                     }
                 }}

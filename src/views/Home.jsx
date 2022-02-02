@@ -59,17 +59,12 @@ const Home = () => {
         setIndex(lists.state.findIndex(list => list.id === id))
     }
     const removeList = async id => {
-        const listIndex = lists.state.findIndex(list => list.id === id)
-        if (lists.state.length > 1) {  
-            lists.set(lists.state.splice(listIndex, 1))
+        if (lists.state.length > 1 && index !== 0) {
+            setIndex(index - 1)
         } else {
-            lists.set([])
+            setIndex(0)
         }
-        if (index > 0) {
-            setIndex(listIndex - 1)
-        } else {
-            setIndex(0) // Refreshes component
-        }
+        lists.set(lists.state.filter(list => list.id !== id))
     }
     const getListItems = async id => {
         setLoading(true)
@@ -107,7 +102,7 @@ const Home = () => {
                 onSubmit={handleSubmit}
                 />
                 <List
-                listId={lists.state[index].id}
+                listId={lists.state[index].id || lists.state[0].id}
                 data={items}
                 removeItem={removeItem}
                 />
