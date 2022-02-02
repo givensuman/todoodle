@@ -2,6 +2,8 @@ import React, { useContext, useState } from 'react'
 import { Button } from 'react-bootstrap'
 import { CheckLg, XLg } from 'react-bootstrap-icons'
 import styled from '@emotion/styled'
+import { AnimatePresence, motion } from 'framer-motion'
+
 import { completeTask } from '../firebase/handleUser'
 import { crossOutItem } from '../firebase/handleData'
 import { StoreContext } from '../utils/store'
@@ -51,7 +53,8 @@ const ListItem = ({ item, removeItem, listId }) => {
             let state = !crossOut
             setCrossOut(state)
             await crossOutItem(user.state.uid, listId, item.id, state)
-            }}>
+        }}
+        >
             <Text>
             {item.data.content}
             </Text>
@@ -107,6 +110,11 @@ const StyledContainer = styled.div`
 
 const List = ({ data, removeItem, listId }) => {
     return (
+        <AnimatePresence>
+        <motion.div
+                initial={{ x: 500 }}
+                animate={{ x: 0 }}
+        >
         <StyledContainer className='col center'>
             {data && data.length > 0 ?
             data.map(item => 
@@ -119,6 +127,8 @@ const List = ({ data, removeItem, listId }) => {
             )
             : null}
         </StyledContainer>
+        </motion.div>
+        </AnimatePresence>
     )
 }
 
