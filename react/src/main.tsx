@@ -12,12 +12,18 @@ const Todo = ({ text, remove }: Todo) => {
   return (
     <div
       className={`todos-container ${isComplete && 'complete'}`}
-      onClick={() => setIsComplete(state => !state)}
+      onClick={e => {
+        e.stopPropagation()
+        setIsComplete(state => !state)
+      }}
     >
       <span className="todos-todo">{text}</span>
       <button 
         className="todos-delete"
-        onClick={remove}
+        onClick={e => {
+          e.stopPropagation()
+          remove()
+        }}
       />
     </div>
   )
@@ -40,7 +46,14 @@ const App = () => {
   return (
     <div id="app">
 
-      <h1 className="header">React</h1>
+      <h1 
+        className="header"
+        style={{
+          color: "#2196f3"
+        }}
+      >
+        React
+      </h1>
 
       <div className="input-wrapper">
         <input
@@ -49,7 +62,9 @@ const App = () => {
           className="input-input"
           value={input}
           onChange={e => setInput(e.target.value)}
-          onKeyDown={e => { if (e.key === 'Enter') addTodo() }}
+          onKeyDown={e => { 
+            if (e.key === 'Enter') addTodo() 
+          }}
         />
         <button 
           className="input-button"
