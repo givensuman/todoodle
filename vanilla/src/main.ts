@@ -26,10 +26,7 @@ inputInput.classList.add('input-input')
 const inputSubmit = document.createElement('button')
 inputSubmit.innerHTML = 'Add'
 inputSubmit.classList.add('input-button')
-inputSubmit.onclick = () => {
-  addTodo(inputInput.value)
-  inputInput.value = ""
-}
+inputSubmit.onclick = () => addTodo()
 
 const inputWrapper = document.createElement('div')
 inputWrapper.classList.add('input-wrapper')
@@ -40,10 +37,10 @@ const input = append([inputInput, inputSubmit], inputWrapper)
 const todos = document.createElement('div')
 todos.classList.add('todos-wrapper')
 
-const addTodo = (value: string) => {
-  if (value === "") return
+const addTodo = () => {
+  if (inputInput.value === "") return
   const newTodo = document.createElement('span')
-  newTodo.innerHTML = value
+  newTodo.innerHTML = inputInput.value
   newTodo.classList.add('todos-todo')
 
   const deleteTodo = document.createElement('button')
@@ -57,7 +54,13 @@ const addTodo = (value: string) => {
   const todo = append([newTodo, deleteTodo], todoContainer)
 
   append([todo], todos)
+
+  inputInput.value = ""
 }
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Enter') addTodo()
+})
 
 const handleTodo = (todo: HTMLSpanElement) => {
   if (!todo.classList.contains('complete')) todo.classList.add('complete')
@@ -67,7 +70,6 @@ const handleTodo = (todo: HTMLSpanElement) => {
 const removeTodo = (todo: HTMLSpanElement) => { 
   todos.removeChild(todo)
 }
-
 
 const divider = document.createElement('div')
 divider.classList.add('divider')
