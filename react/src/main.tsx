@@ -21,16 +21,9 @@ const App = () => {
     localStorage.setItem(key, JSON.stringify(value))
   }
 
-  const getQuote = async () => {
-    await fetch('https://type.fit/api/quotes')
-      .then(res => res.json())
-      .then(data => console.log(data))
-  }
-
   useEffect(() => {
     setTodos(readLocalStorage('todoodle--todos', []))
     setCompletedCount(readLocalStorage('todoodle--completedCount', 0))
-    getQuote()
   }, [])
 
   const addTodo = () => {
@@ -60,6 +53,11 @@ const App = () => {
     writeLocalStorage('todoodle--todos', filteredState)
   }
 
+  const resetCount = () => {
+    setCompletedCount(0)
+    writeLocalStorage('todoodle-completedCount', 0)
+  }
+
   return (
     <div id="app">
 
@@ -73,7 +71,15 @@ const App = () => {
       React
     </h1>
 
-    <h3 className="completed-count">{completedCount} completed tasks</h3>
+    <div className="completed-wrapper">
+      <h3 className="completed-count">{completedCount} completed tasks</h3>
+      <button 
+        className="completed-reset"
+        onClick={resetCount}
+      >
+        Reset
+      </button>
+    </div>
 
     <div className="input-wrapper">
       <input 

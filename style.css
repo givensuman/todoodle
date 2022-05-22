@@ -36,11 +36,37 @@
     font-size: 3rem;
     margin-top: 1em;
     text-align: center;
+    user-select: none;
+  }
+
+  /* Completed */
+
+  .completed-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
   }
 
   .completed-count {
     text-align: center;
     color: var(--text);
+    margin-right: 0.5em;
+    user-select: none;
+  }
+
+  .completed-reset {
+    border: none;
+    padding: 0.5em;
+    border-radius: 0.25em;
+    cursor: pointer;
+    background-color: var(--base);
+    transition: background-color 0.2s;
+  }
+  .completed-reset:hover {
+    background-color: var(--action);
+  }
+  .completed-reset:focus {
+    outline: solid 2px var(--action);
   }
   
   /* Input */
@@ -67,6 +93,7 @@
     margin-left: 1em;
     border-radius: 0.25em;
     border: none;
+    outline: solid 2px var(--action);
     font-size: var(--fontSize);
     cursor: pointer;
     background-color: var(--base);
@@ -136,9 +163,21 @@
   .completed {
     background-color: transparent;
     outline: solid 2px var(--action);
-  }
+    position: relative;
+  } 
   .completed > .todos-todo {
     opacity: 0.5;
+    position: relative;
+  }  
+  .completed > .todos-todo::before {
+    content: "";
+    width: 90%;
+    height: 2px;
+    background-color: var(--text);
+    border: solid 1px var(--text);
+    border-radius: 0.2em;
+    position: absolute;
+    top: 50%;
   }
   .completed > .todos-delete:hover {
     background-color: var(--success);
