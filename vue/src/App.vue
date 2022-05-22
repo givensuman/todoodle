@@ -82,6 +82,7 @@ const resetCount = () => {
   <div className="todos-wrapper">
     <div 
       v-for="(task, index) in todos"
+      :key="index"
       class="todos-container"
       :class="{'completed': task.completed}"
       @click="toggleTodo(index)"

@@ -169,7 +169,7 @@
     opacity: 0.5;
     position: relative;
   }  
-  .completed > .todos-todo::before {
+  /* .completed > .todos-todo::before {
     content: "";
     width: 90%;
     height: 2px;
@@ -178,7 +178,7 @@
     border-radius: 0.2em;
     position: absolute;
     top: 50%;
-  }
+  } */
   .completed > .todos-delete:hover {
     background-color: var(--success);
   }
