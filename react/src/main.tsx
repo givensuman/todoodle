@@ -26,13 +26,17 @@ const App = () => {
     setCompletedCount(readLocalStorage('todoodle--completedCount', 0))
   }, [])
 
+  useEffect(() => {
+    writeLocalStorage('todoodle--todos', todos)
+  }, [todos])
+
+  useEffect(() => {
+    writeLocalStorage('todoodle--completedCount', completedCount)
+  }, [completedCount])
+
   const addTodo = () => {
     if (input === "") return
-    const extendedState = [...todos, {
-      value: input, completed: false
-    }]
-    writeLocalStorage('todoodle--todos', extendedState) 
-    setTodos(extendedState)
+    setTodos(state => [...state, { value: input, completed: false }])
     setInput('')
   }
 
@@ -40,22 +44,15 @@ const App = () => {
     const shallowState = [...todos]
     shallowState[index].completed = !shallowState[index].completed
     setTodos(shallowState)
-    writeLocalStorage('todoodle--todos', shallowState)
   }
 
   const removeTodo = (index: number) => {
-    if (todos[index].completed) {
-      writeLocalStorage('todoodle--completedCount', completedCount + 1)
-      setCompletedCount(state => state + 1)
-    }
-    const filteredState = [...todos].filter((_, i) => i !== index)
-    setTodos(filteredState)
-    writeLocalStorage('todoodle--todos', filteredState)
+    if (todos[index].completed) setCompletedCount(state => state + 1)
+    setTodos(state => state.filter((_, i) => i !== index))
   }
 
   const resetCount = () => {
     setCompletedCount(0)
-    writeLocalStorage('todoodle-completedCount', 0)
   }
 
   return (

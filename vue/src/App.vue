@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import '../../style.css'
-import { ref, onMounted } from 'vue'
+import { ref, watch, onMounted } from 'vue'
 
 type Todo = {
   value: string,
@@ -24,23 +24,20 @@ onMounted(() => {
   completedCount.value = readLocalStorage('todoodle--completedCount', 0)
 })
 
+watch(todos, () => writeLocalStorage('todoodle--todos', todos.value))
+watch(completedCount, () => writeLocalStorage('todoodle--completedCount', completedCount.value))
+
 const addTodo = () => {
   if (input.value === "") return
-  todos.value = [...todos.value, {
-    value: input.value,
-    completed: false
-  }]
-  writeLocalStorage('todoodle--todos', todos.value)
+  todos.value = [...todos.value, { value: input.value,completed: false }]
   input.value = ""
 }
 
 const removeTodo = (index: number) => {
   if (todos.value[index].completed) {
     completedCount.value++
-    writeLocalStorage('todoodle--completedCount', completedCount.value)
   }
   todos.value = todos.value.filter((_, i) => i !== index)
-  writeLocalStorage('todoodle--todos', todos.value)
 }
 
 const toggleTodo = (index: number) => {
@@ -51,7 +48,6 @@ const toggleTodo = (index: number) => {
 
 const resetCount = () => {
   completedCount.value = 0
-  writeLocalStorage('todoodle-completedCount', completedCount.value)
 }
 </script>
 
@@ -59,27 +55,27 @@ const resetCount = () => {
 
 <div id="app">
 
-  <h1 className="header">Vue</h1>
+  <h1 class="header">Vue</h1>
 
-  <div className="completed-wrapper">
-    <h3 className="completed-count">
+  <div class="completed-wrapper">
+    <h3 class="completed-count">
       {{ completedCount }} completed tasks
     </h3>
-    <button className="completed-reset" @click="resetCount">Reset</button>
+    <button class="completed-reset" @click="resetCount">Reset</button>
   </div>
 
-  <div className="input-wrapper">
+  <div class="input-wrapper">
     <input
-      className="input-input"
+      class="input-input"
       type="text"
       placeholder="Create a new to-do"
       v-model="input"
       @keydown.enter="addTodo"
     />
-    <button className="input-button" @click="addTodo">Add</button>
+    <button class="input-button" @click="addTodo">Add</button>
   </div>
 
-  <div className="todos-wrapper">
+  <div class="todos-wrapper">
     <div 
       v-for="(task, index) in todos"
       :key="index"
@@ -87,8 +83,8 @@ const resetCount = () => {
       :class="{'completed': task.completed}"
       @click="toggleTodo(index)"
     >
-      <span className="todos-todo">{{ task.value }}</span>
-      <button className="todos-delete" @click.stop="removeTodo(index)"/>
+      <span class="todos-todo">{{ task.value }}</span>
+      <button class="todos-delete" @click.stop="removeTodo(index)"/>
     </div>
   </div>
 
