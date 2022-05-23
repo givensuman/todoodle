@@ -1,0 +1,3 @@
+Overall I kind of liked Svelte. It feels most comparable so far to Vue3, but with more of a focus on being close to vanilla JavaScript, i.e. reactive state is simply a `let` rather than an import like `ref` or `useState`.
+
+I did run into issues with reactively setting state into localStorage. Unlike other frameworks, Svelte wanted to write to localStorage the initial values of state, which effectively erased localStorage. I think I appreciate the intuitive control something like `watch` or `useEffect` offered, even if it is more code.
