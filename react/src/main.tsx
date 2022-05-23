@@ -84,7 +84,7 @@ const App = () => {
         type="text"
         placeholder="Create a new to-do"
         value={input}
-        onChange={e => setInput(e.target.value)}
+        onInput={e => setInput(e.currentTarget.value)}
         onKeyDown={e => e.key === "Enter" && addTodo()}
       />
       <button
