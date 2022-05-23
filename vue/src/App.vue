@@ -95,6 +95,6 @@ const resetCount = () => {
 <style scoped>
 h1 {
   color: #81c784;
-  text-shadow: 1px 1px #4caf50, 2px 2px #388e3c, 3px 3px #1b5e20;
+  text-shadow: 1px 1px 1px #4caf50, 2px 2px 2px #388e3c, 3px 3px 3px #1b5e20;
 }
 </style>

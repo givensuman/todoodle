@@ -62,7 +62,7 @@ const App = () => {
       className="header"
       style={{
         color: "#64b5f6",
-        textShadow: "1px 1px #2196f3, 2px 2px #1976d2, 3px 3px #0d47a1"
+        textShadow: "1px 1px 1px #2196f3, 2px 2px 2px #1976d2, 3px 3px 3px #0d47a1"
       }}
     >
       React

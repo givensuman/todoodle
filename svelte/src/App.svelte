@@ -91,6 +91,6 @@
 <style>
   .header {
     color: #ff8a65;
-    text-shadow: 1px 1px #ff5722, 2px 2px #e64a19, 3px 3px #bf360c;
+    text-shadow: 1px 1px 1px #ff5722, 2px 2px 2px #e64a19, 3px 3px 3px #bf360c;
   }
 </style>
