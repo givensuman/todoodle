@@ -49,9 +49,12 @@
 
   .completed-count {
     text-align: center;
-    color: var(--text);
     margin-right: 0.5em;
     user-select: none;
+    font-weight: lighter;
+  }
+  .completed-count::first-letter {
+    font-weight: bold;
   }
 
   .completed-reset {
@@ -60,6 +63,7 @@
     border-radius: 0.25em;
     cursor: pointer;
     background-color: var(--base);
+    outline: solid 2px var(--action);
     transition: background-color 0.2s;
   }
   .completed-reset:hover {
@@ -125,14 +129,18 @@
     margin: 0.5em 0;
     border-radius: 0.25em;
     cursor: pointer;
-    background-color: var(--action);
+    background-color: var(--base);
     max-width: 100%;
     flex-wrap: wrap;
+    transition: background-color 0.2s;
+  }
+  .todos-container:hover {
+    background-color: var(--action);
   }
   
   .todos-todo {
     font-size: var(--fontSize);
-    max-width: 90%;
+    max-width: 30ch;
     overflow: hidden;;
   }
   
@@ -161,10 +169,14 @@
   }
   
   .completed {
-    background-color: transparent;
-    outline: solid 2px var(--action);
+    background-color: transparent!important;
+    outline: solid 2px var(--base);
     position: relative;
+    transition: outline-color 0.2s;
   } 
+  .completed:hover {
+    outline-color: var(--action);
+  }
   .completed > .todos-todo {
     opacity: 0.5;
     position: relative;
