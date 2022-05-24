@@ -32,11 +32,7 @@ const removeTodo = (index: number) => {
   todos = todos.filter((_, i) => i !== index)
 }
 
-const toggleTodo = (index: number) => {
-  const shallowState = [...todos]
-  shallowState[index].completed = !shallowState[index].completed
-  todos = shallowState
-}
+const toggleTodo = (index: number) => { todos[index].completed = !todos[index].completed }
 
 const resetCount = () => { completedCount = 0 }
 
