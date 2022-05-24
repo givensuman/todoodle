@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite App</title>
+  </head>
+  <body>
+    <div 
+      id="app"
+      x-data="{
+        todos: [],
+        completedCount: 0,
+        input: ''
+      }"
+      x-init="
+        if (localStorage.getItem('todoodle--todos')) {
+          todos = JSON.parse(localStorage['todoodle--todos'])
+        }
+        else { todos = [] }
+
+        if (localStorage.getItem('todoodle--completedCount')) {
+          completedCount = JSON.parse(localStorage['todoodle--completedCount'])
+        }
+        else { completedCount = [] }
+      "
+      x-effect="
+        localStorage.setItem('todoodle--todos', JSON.stringify(todos))
+        localStorage.setItem('todoodle--completedCount', JSON.stringify(completedCount))
+      "
+    >
+      
+      <h1 
+        class="header" 
+        style="color: #4db6ac; text-shadow: 1px 1px 1px #009688, 2px 2px 2px #00796b, 3px 3px 3px #004d40"
+      >
+        Alpine
+      </h1>
+
+      <div class="completed-wrapper">
+        <h3 
+          class="completed-count" 
+          x-text="completedCount + ' completed tasks'"
+        ></h3>
+        <button class="completed-reset" @click="completedCount = 0">Reset</button>
+      </div>
+
+      <div 
+        class="input-wrapper"
+        x-data="{ addTodo: () => {
+          if (input !== '') {
+            todos = [...todos, { value: input, completed: false }]
+            input = ''
+          }
+        }}"
+      >
+        <input
+          class="input-input"
+          type="text"
+          placeholder="Create a new to-do"
+          x-model="input"
+          @keydown.enter="addTodo"
+        />
+        <button class="input-button" @click="addTodo">Add</button>
+      </div>
+
+      <div class="todos-wrapper">
+        <template x-for="task, index in todos">
+          <div 
+            class="todos-container" 
+            :class="{ 'completed': task.completed }"
+            @click="todos[index].completed = !todos[index].completed"
+          >
+            <span class="todos-todo" x-text="task.value"></span>
+            <button 
+              class="todos-delete" 
+              @click.stop="() => {
+                if (task.completed) completedCount++
+                todos = todos.filter((_, i) => i !== index)
+              }" 
+            />
+          </div>
+        </template>
+      </div>
+
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
