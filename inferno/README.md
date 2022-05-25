@@ -12,4 +12,4 @@ The docs are bafflingly sparse. Like, the equivalent of a bad README. I guess it
 The API is good, I'd say it feels like just a less irritating Angular.
 
 ## Thoughts
-I don't know why I would ever use this library again. It doesn't have a TypeScript template, it seemingly broke half my css for some reason which I had to fix in-line, and there is virtually no documentation. The API is good, but not better than others.
+I don't know why I would ever use this library again. It doesn't have a TypeScript template, it seemingly broke half my CSS for some reason which I had to fix in-line, and there is virtually no documentation. The API is good, but not better than others.
