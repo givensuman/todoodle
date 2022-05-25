@@ -132,7 +132,7 @@
     background-color: var(--base);
     max-width: 100%;
     flex-wrap: wrap;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s, outline 0.2s;
   }
   .todos-container:hover {
     background-color: var(--action);
