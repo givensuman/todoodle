@@ -3,7 +3,7 @@ I didn't really like Angular. I'm sure it's fantastic for huge teams, and I thin
 
 In summary, I see it's value, and I'm sure it's powerful if you're used to it, I just think there's other frameworks doing things better.
 
-Also it wouldn't apply my stylesheet and I have no idea why.
+Also it wouldn't apply my stylesheet and I have no idea why. (Fixed)
 
 ## Documentation/Help - 6/10
 If Vue documentation is a well-built manual that tells you what you need to know, Angular documentation is a textbook from 30 years ago that is overwhelming and foreign. Documentation is exhaustive and there are plenty of examples, it's just there's a ton of it and I didn't find beginner-friendliness to be the forefront in the writing.
