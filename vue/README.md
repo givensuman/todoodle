@@ -1,12 +1,17 @@
-## Overall - 10/10
+# 10/10
+
+## Overall
 I was blown away at how much I liked writing Vue code. 
 
 It's basically the best way of doing a framework I can think of.
 
-## Documentation/Help - 9/10
+## Documentation/Help
 Really good documentation and a helpful community second only to React.
 
-## API - 10/10
+## API
 I really, really like the new composition API. I have used Vue before and eventually stopped in favor of writing React's JSX.
 
-Now, with Vue3, it feels like writing JSX in what is just a more lovable framework. I think it's little things like being able to `v-model` an `<input />` to state and just having it work. I also learned about some new magic Vue has with `.stop` and `.enter`.
+Now, with Vue3, it feels like writing JSX in what is just a more lovable framework.
+
+## Thoughts
+I plan to use Vue again. It was pleasant to write, and basically took my favorite bits of the other frameworks and incorporated them.

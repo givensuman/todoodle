@@ -1,4 +1,4 @@
-# 3/10
+# 5/10
 
 ## Overall
 The order that I made these turned out pretty interesting. Inferno seems to be meant to model React's class component system, which itself was meant to improve on Angular. I can see how this is basically a simplified Angular, and it takes the unintuitive nature of Angular and streamlines it quite a bit.
@@ -12,4 +12,4 @@ The docs are bafflingly sparse. Like, the equivalent of a bad README. I guess it
 The API is good, I'd say it feels like just a less irritating Angular.
 
 ## Thoughts
-I don't know why I would ever use this library again. It doesn't have a TypeScript template, it seemingly broke half my css for some reason which I had to fix in-line, there is virtually no documentation, and the API is at best stuck in the past.
+I don't know why I would ever use this library again. It doesn't have a TypeScript template, it seemingly broke half my css for some reason which I had to fix in-line, and there is virtually no documentation. The API is good, but not better than others.
