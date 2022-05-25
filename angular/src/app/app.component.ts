@@ -8,6 +8,7 @@ type Todo = {
 @Component({
   selector: 'app-root',
   styleUrls: ['../../../style.css'],
+  styles: ['h1 { color: #e57373; text-shadow: 1px 1px 1px #f44336, 2px 2px 2px #d32f2f, 3px 3px 3px #b71c1c};'],
   template:`
     <div id='app'>
 
